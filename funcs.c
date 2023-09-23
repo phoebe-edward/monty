@@ -30,29 +30,29 @@ void free_all(int all)
 
 	if (all == 0)
 	{
-		if (data.line)
+		if (data->line)
 		{
-			free(data.line);
-			data.line = NULL;
+			free(data->line);
+			data->line = NULL;
 		}
-		if (data.words)
+		if (data->words)
 		{
-			for (i = 0; data.words[i]; i++)
-				free(data.words[i]);
-			data.words = NULL;
+			for (i = 0; data->words[i]; i++)
+				free(data->words[i]);
+			data->words = NULL;
 		}
 	}
 	else if (all == 1)
 	{
-		if (data.file_ptr)
+		if (data->file_ptr)
 		{
-			fclose(data.file_ptr);
-			data.file_ptr = NULL;
+			fclose(data->file_ptr);
+			data->file_ptr = NULL;
 		}
-		if (data.stack)
+		if (data->stack)
 		{
 			free_stack();
-			data.stack = NULL;
+			data->stack = NULL;
 		}
 	}
 }
@@ -63,9 +63,9 @@ void free_stack(void)
 {
 	stack_t *str_curr = NULL;
 
-	if (data.stack)
+	if (data->stack)
 	{
-		str_curr = data.stack;
+		str_curr = data->stack;
 		while (str_curr->next != NULL)
 		{
 			str_curr = str_curr->next;

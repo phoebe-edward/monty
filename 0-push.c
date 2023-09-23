@@ -13,24 +13,25 @@ void _push(stack_t **stack, unsigned int line_number)
 	stack1 = malloc(sizeof(stack_t));
 	if (stack1 == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	if (data.words[1] == NULL || is_int(data.words[1]) == 0)
+	if (data->words[1] == NULL || is_int(data->words[1]) == 0)
 	{
-		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if (data.stack == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
 		stack1->next = NULL;
 		stack1->prev = NULL;
-		stack1->n = atoi(data.words[1]);
-		data.stack = stack1;
+		stack1->n = atoi(data->words[1]);
+		stack = &stack1;
+		data->stack = stack1;
 	}
 	else
 	{
-		str_curr = data.stack;
+		str_curr = *stack;
 		while (str_curr->next != NULL)
 		{
 			str_curr = str_curr->next;
@@ -38,9 +39,8 @@ void _push(stack_t **stack, unsigned int line_number)
 		str_curr->next = stack1;
 		stack1->prev = str_curr;
 		stack1->next = NULL;
-		stack1->n = atoi(data.words[1]);
+		stack1->n = atoi(data->words[1]);
 	}
-	(void)stack;
 }
 /**
  * is_int - checks wether the given string is an integer or not

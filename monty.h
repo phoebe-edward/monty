@@ -1,6 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
-
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -60,13 +60,13 @@ typedef struct data_s
 	char **words;
 	stack_t *stack;
 } data_t;
-extern data_t data;
+extern data_t *data;
 void helping(args_t *args);
 char **_strtok(char *line);
 void _push(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
 void (*func_choice(char **words))(stack_t **, unsigned int);
 void free_all(int all);
 void free_stack(void);
 int is_int(char *str);
-
 #endif
