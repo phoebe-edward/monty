@@ -1,4 +1,7 @@
-push 12
-push 2
-nop
+push 98
 pall
+pint
+swap
+pop
+add
+nop
