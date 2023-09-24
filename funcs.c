@@ -1,10 +1,9 @@
 #include "monty.h"
 /**
  * func_choice - choose function based on opcode
- * @words: words obtained from line
  * Return: function pointer to chosen func
  */
-void (*func_choice(char **words))(stack_t **, unsigned int)
+void (*func_choice(void))(stack_t **, unsigned int)
 {
 	instruction_t inst[] = {
 		{"push", _push},
@@ -16,29 +15,23 @@ void (*func_choice(char **words))(stack_t **, unsigned int)
 
 	for (i = 0; i < opcodes; i++)
 	{
-		if (strcmp(inst[i].opcode, words[0]) == 0)
+		if (strcmp(inst[i].opcode, data->word1) == 0)
 			return (inst[i].f);
 	}
 	return (NULL);
 }
 /**
  * free_all - free all string arrays
- * @all: 0 or 1 (0 for line and words only, 1 for file_ptr and stack too
+ * @all: if 1 close file and empty stack
  */
 void free_all(int all)
 {
-	if (all == 0)
+	if (data->line != NULL)
 	{
-		if (data->words != NULL)
-		{
-			if (data->words[0] != NULL)
-				free(data->words[0]);
-			free(data->words);
-		}
-		if (data->line != NULL)
-			free(data->line);
+		free(data->line);
+		printf("freed data->line\n");
 	}
-	else if (all == 1)
+	if (all == 1)
 	{
 		if (data->file_ptr)
 		{

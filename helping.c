@@ -21,26 +21,29 @@ void helping(args_t *args)
 	}
 	while (1)
 	{
-		data->line = NULL, data->words = NULL;
+		data->line = NULL, data->word1 = NULL;
 		num = getline(&(data->line), &len, data->file_ptr);
 		if (num < 0)
 			break;
 		data->line[strcspn(data->line, "\n")] = '\0';
 		args->line_num++;
-		data->words = _strtok(strdup(data->line));
-		if (data->words[0] == NULL || data->words[0][0] == '#')
+		data->word1 = strtok(data->line, " ");
+		printf("data->word1 = %s\n", data->word1);
+		printf("data->line = %s\n", data->line);
+		if (data->word1 == NULL || data->word1[0] == '#')
 		{
-			free(data->line);
+			free_all(0);
 			continue;
 		}
-		func_ptr = func_choice(data->words);
+		func_ptr = func_choice();
 		if (func_ptr == NULL)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
-				args->line_num, data->words[0]);
+				args->line_num, data->word1);
 			free_all(0);
 			exit(EXIT_FAILURE);
 		}
 		func_ptr(&(data->stack), args->line_num);
 	}
+	free_all(1);
 }

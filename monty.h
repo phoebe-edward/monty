@@ -57,16 +57,15 @@ typedef struct data_s
 {
 	FILE *file_ptr;
 	char *line;
-	char **words;
+	char *word1;
 	stack_t *stack;
 } data_t;
 extern data_t *data;
 void helping(args_t *args);
-char **_strtok(char *line);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
-void (*func_choice(char **words))(stack_t **, unsigned int);
+void (*func_choice(void))(stack_t **, unsigned int);
 void free_all(int all);
 void free_stack(void);
 int is_int(char *str);

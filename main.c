@@ -28,8 +28,9 @@ int main(int argc, char **argv)
 	}
 	data->file_ptr = NULL;
 	data->line = NULL;
-	data->words = NULL;
-
+	data->word1 = NULL;
+	data->stack = NULL;
+	
 	helping(args);
 	free(data);
 	free(args);
