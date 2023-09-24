@@ -22,23 +22,19 @@ void _swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	stack_curr2 = stack_curr1->next;
-	while (stack_curr2->next != NULL)
-	{
-		stack_curr1 = stack_curr1->next;
-		stack_curr2 = stack_curr2->next;
-	}
-	stack_temp = stack_curr1->prev;
+	stack_temp = stack_curr2->next;
 	if (stack_temp != NULL)
 	{
-		stack_temp->next = stack_curr2;
-		stack_curr2->prev = stack_temp;
+		stack_temp->prev = stack_curr1;
+		stack_curr1->next = stack_temp;
 	}
 	else
 	{
-		data->stack = stack_curr2;
-		stack_curr2->prev = NULL;
+		stack_curr1->next = NULL;
 	}
 	stack_curr2->next = stack_curr1;
 	stack_curr1->prev = stack_curr2;
-	stack_curr1->next = NULL;
+	stack_curr2->prev = NULL;
+	data->stack = stack_curr2;
+	*stack = stack_curr2;
 }

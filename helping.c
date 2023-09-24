@@ -6,22 +6,12 @@
 void helping(args_t *args)
 {
 	size_t len;
-	int num;
 	void (*func_ptr)(stack_t **, unsigned int);
 
-	if (args->argc != 2)
-		fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
-	data->file_ptr = fopen(args->argv, "r");
-	if (data->file_ptr == NULL)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", args->argv);
-		exit(EXIT_FAILURE);
-	}
 	while (1)
 	{
 		data->line = NULL, data->word1 = NULL;
-		num = getline(&(data->line), &len, data->file_ptr);
-		if (num < 0)
+		if (getline(&(data->line), &len, data->file_ptr) < 0)
 			break;
 		data->line[strcspn(data->line, "\n")] = '\0';
 		args->line_num++;
@@ -36,10 +26,14 @@ void helping(args_t *args)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 				args->line_num, data->word1);
-			free_all(0);
+			if (args != NULL)
+				free(args);
+			free_all(1);
 			exit(EXIT_FAILURE);
 		}
 		func_ptr(&(data->stack), args->line_num);
 	}
+	if (args != NULL)
+		free(args);
 	free_all(1);
 }

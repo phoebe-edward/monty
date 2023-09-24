@@ -34,19 +34,26 @@ void (*func_choice(void))(stack_t **, unsigned int)
  */
 void free_all(int all)
 {
-	if (data->line != NULL)
-		free(data->line);
+	if (data != NULL)
+	{
+		if (data->line != NULL)
+			free(data->line);
+	}
 	if (all == 1)
 	{
-		if (data->file_ptr)
+		if (data != NULL)
 		{
-			fclose(data->file_ptr);
-			data->file_ptr = NULL;
-		}
-		if (data->stack)
-		{
-			free_stack();
-			data->stack = NULL;
+			if (data->file_ptr)
+			{
+				fclose(data->file_ptr);
+				data->file_ptr = NULL;
+			}
+			if (data->stack)
+			{
+				free_stack();
+				data->stack = NULL;
+			}
+			free(data);
 		}
 	}
 }

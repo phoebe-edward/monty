@@ -19,7 +19,6 @@ int main(int argc, char **argv)
 	args->argv = argv[1];
 	args->argc = argc;
 	args->line_num = 0;
-
 	data = malloc(sizeof(data_t));
 	if (data == NULL)
 	{
@@ -30,9 +29,22 @@ int main(int argc, char **argv)
 	data->line = NULL;
 	data->word1 = NULL;
 	data->stack = NULL;
-
+	if (args->argc != 2)
+	{
+		if (args != NULL)
+			free(args);
+		free_all(1);
+		fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
+	}
+	data->file_ptr = fopen(args->argv, "r");
+	if (data->file_ptr == NULL)
+	{
+		if (args != NULL)
+			free(args);
+		free_all(1);
+		fprintf(stderr, "Error: Can't open file %s\n", args->argv);
+		exit(EXIT_FAILURE);
+	}
 	helping(args);
-	free(data);
-	free(args);
 	return (EXIT_SUCCESS);
 }

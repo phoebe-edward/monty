@@ -22,18 +22,15 @@ void _div(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	stack_curr2 = stack_curr1->next;
-	while (stack_curr2->next != NULL)
-	{
-		stack_curr1 = stack_curr1->next;
-		stack_curr2 = stack_curr2->next;
-	}
-	if (stack_curr2->n == 0)
+	if (stack_curr1->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		free_all(1);
 		exit(EXIT_FAILURE);
 	}
-	stack_curr1->n = stack_curr1->n / stack_curr2->n;
-	stack_curr1->next = NULL;
-	free(stack_curr2);
+	stack_curr2->n = stack_curr2->n / stack_curr1->n;
+	stack_curr2->prev = NULL;
+	free(stack_curr1);
+	data->stack = stack_curr2;
+	(*stack) = stack_curr2;
 }
