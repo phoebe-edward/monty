@@ -1,0 +1,19 @@
+push 21
+push 32
+push 43
+push 54
+push 65
+push 76
+push 87
+push 98
+pall
+pint
+swap
+pop
+add
+nop
+sub
+div
+mul
+mod
+#comments
