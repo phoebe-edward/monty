@@ -1,0 +1,10 @@
+#include "monty.h"
+/**
+ * _pint - print the value at the top of the stack followed by a new line
+ * @stack: pointer to pointer to stack
+ * @line_number: line number
+ */
+void _pint(stack_t **stack, unsigned int line_number)
+{
+	
+}

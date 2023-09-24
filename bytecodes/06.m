@@ -1,2 +1,6 @@
-3000 push
-pall
+push 1
+pint
+push 2
+pint
+push 3
+pint

@@ -9,9 +9,10 @@ void (*func_choice(char **words))(stack_t **, unsigned int)
 	instruction_t inst[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pint", _pint},
 		{NULL, NULL}
 	};
-	int opcodes = 2, i;
+	int opcodes = 3, i;
 
 	for (i = 0; i < opcodes; i++)
 	{
