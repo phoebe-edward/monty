@@ -13,9 +13,10 @@ void (*func_choice(void))(stack_t **, unsigned int)
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
+		{"sub", _sub},
 		{NULL, NULL}
 	};
-	int opcodes = 7, i;
+	int opcodes = 8, i;
 
 	for (i = 0; i < opcodes; i++)
 	{
