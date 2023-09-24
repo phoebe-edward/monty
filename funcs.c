@@ -26,21 +26,16 @@ void (*func_choice(char **words))(stack_t **, unsigned int)
  */
 void free_all(int all)
 {
-	int i;
-
 	if (all == 0)
 	{
-		if (data->line)
+		if (data->words != NULL)
 		{
+			if (data->words[0] != NULL)
+				free(data->words[0]);
+			free(data->words);
+		}
+		if (data->line != NULL)
 			free(data->line);
-			data->line = NULL;
-		}
-		if (data->words)
-		{
-			for (i = 0; data->words[i]; i++)
-				free(data->words[i]);
-			data->words = NULL;
-		}
 	}
 	else if (all == 1)
 	{

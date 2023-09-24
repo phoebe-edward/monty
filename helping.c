@@ -5,7 +5,7 @@
  */
 void helping(args_t *args)
 {
-	size_t len, newlinePos;
+	size_t len;
 	int num;
 	void (*func_ptr)(stack_t **, unsigned int);
 
@@ -21,15 +21,13 @@ void helping(args_t *args)
 	}
 	while (1)
 	{
-		data->line = NULL;
-		data->words = NULL;
+		data->line = NULL, data->words = NULL;
 		num = getline(&(data->line), &len, data->file_ptr);
 		if (num < 0)
 			break;
-		newlinePos = strcspn(data->line, "\n");
-		data->line[newlinePos] = '\0';
+		data->line[strcspn(data->line, "\n")] = '\0';
 		args->line_num++;
-		data->words = _strtok(data->line);
+		data->words = _strtok(strdup(data->line));
 		if (data->words[0] == NULL || data->words[0][0] == '#')
 		{
 			free(data->line);
