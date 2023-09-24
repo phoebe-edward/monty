@@ -7,7 +7,7 @@
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *stack1 = NULL, *str_curr = NULL;
+	stack_t *stack1 = NULL;
 	char *parameter = NULL;
 
 	stack1 = malloc(sizeof(stack_t));
@@ -30,20 +30,19 @@ void _push(stack_t **stack, unsigned int line_number)
 		stack1->prev = NULL;
 		stack1->n = atoi(parameter);
 		stack = &stack1;
+		*stack = stack1;
+		stack = &stack1;
 		data->stack = stack1;
 	}
 	else
 	{
-		str_curr = *stack;
-		while (str_curr->next != NULL)
-		{
-			str_curr = str_curr->next;
-		}
-		str_curr->next = stack1;
-		stack1->prev = str_curr;
-		stack1->next = NULL;
+		stack1->prev = NULL;
+		stack1->next = *stack;
+		(*stack)->prev = stack1;
 		stack1->n = atoi(parameter);
-		data->stack = *stack;
+		*stack = stack1;
+		stack = &stack1;
+		data->stack = stack1;
 	}
 }
 /**
