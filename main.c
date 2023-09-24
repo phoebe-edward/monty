@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 		if (args != NULL)
 			free(args);
 		free_all(1);
-		fprintf(stderr, "Error: Can't open file %s\n", args->argv);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	helping(args);
