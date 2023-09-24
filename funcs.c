@@ -15,9 +15,11 @@ void (*func_choice(void))(stack_t **, unsigned int)
 		{"nop", _nop},
 		{"sub", _sub},
 		{"div", _div},
+		{"mul", _mul},
+		{"mod", _mod},
 		{NULL, NULL}
 	};
-	int opcodes = 9, i;
+	int opcodes = 11, i;
 
 	for (i = 0; i < opcodes; i++)
 	{
