@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	data->line = NULL;
 	data->word1 = NULL;
 	data->stack = NULL;
-	
+
 	helping(args);
 	free(data);
 	free(args);

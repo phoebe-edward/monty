@@ -50,7 +50,7 @@ typedef struct args_s
  * struct data_s - data structure
  * @file_ptr: file pointer
  * @line: pointer to line string
- * @words: array of words
+ * @word1: first word of line
  * @stack: stack to be created with opcode (pushed and poped)
  */
 typedef struct data_s

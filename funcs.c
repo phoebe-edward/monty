@@ -27,10 +27,7 @@ void (*func_choice(void))(stack_t **, unsigned int)
 void free_all(int all)
 {
 	if (data->line != NULL)
-	{
 		free(data->line);
-		printf("freed data->line\n");
-	}
 	if (all == 1)
 	{
 		if (data->file_ptr)

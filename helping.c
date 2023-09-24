@@ -10,9 +10,7 @@ void helping(args_t *args)
 	void (*func_ptr)(stack_t **, unsigned int);
 
 	if (args->argc != 2)
-	{
 		fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
-	}
 	data->file_ptr = fopen(args->argv, "r");
 	if (data->file_ptr == NULL)
 	{
@@ -28,8 +26,6 @@ void helping(args_t *args)
 		data->line[strcspn(data->line, "\n")] = '\0';
 		args->line_num++;
 		data->word1 = strtok(data->line, " ");
-		printf("data->word1 = %s\n", data->word1);
-		printf("data->line = %s\n", data->line);
 		if (data->word1 == NULL || data->word1[0] == '#')
 		{
 			free_all(0);
