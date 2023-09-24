@@ -12,7 +12,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
 		free_all(1);
 		exit(EXIT_FAILURE);
 	}
-	if ((*stack)->n + '\0' > 127)
+	if ((*stack)->n + '\0' > 127 || (*stack)->n + '\0' < 0)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		free_all(1);
