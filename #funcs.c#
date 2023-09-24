@@ -9,10 +9,10 @@ void (*func_choice(void))(stack_t **, unsigned int)
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
-		{"pop", _pop},
+		{"pop",_pop},
 		{NULL, NULL}
 	};
-	int opcodes = 4, i;
+	int opcodes = 3, i;
 
 	for (i = 0; i < opcodes; i++)
 	{

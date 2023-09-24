@@ -43,6 +43,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		stack1->prev = str_curr;
 		stack1->next = NULL;
 		stack1->n = atoi(parameter);
+		data->stack = *stack;
 	}
 }
 /**
