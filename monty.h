@@ -52,6 +52,7 @@ typedef struct args_s
  * @line: pointer to line string
  * @word1: first word of line
  * @stack: stack to be created with opcode (pushed and poped)
+ * @mode: 0 for slack and 1 for queue
  */
 typedef struct data_s
 {
@@ -59,6 +60,7 @@ typedef struct data_s
 	char *line;
 	char *word1;
 	stack_t *stack;
+	int mode;
 } data_t;
 extern data_t *data;
 void helping(args_t *args);
@@ -77,6 +79,8 @@ void _pchar(stack_t **stack, unsigned int line_number);
 void _pstr(stack_t **stack, unsigned int line_number);
 void _rotl(stack_t **stack, unsigned int line_number);
 void _rotr(stack_t **stack, unsigned int line_number);
+void _stack(stack_t **stack, unsigned int line_number);
+void _queue(stack_t **stack, unsigned int line_number);
 void (*func_choice(void))(stack_t **, unsigned int);
 void free_all(int all);
 void free_stack(void);

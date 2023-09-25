@@ -21,9 +21,11 @@ void (*func_choice(void))(stack_t **, unsigned int)
 		{"pstr", _pstr},
 		{"rotl", _rotl},
 		{"rotr", _rotr},
+		{"stack", _stack},
+		{"queue", _queue},
 		{NULL, NULL}
 	};
-	int opcodes = 15, i;
+	int opcodes = 17, i;
 
 	for (i = 0; i < opcodes; i++)
 	{
