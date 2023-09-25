@@ -20,9 +20,10 @@ void (*func_choice(void))(stack_t **, unsigned int)
 		{"pchar", _pchar},
 		{"pstr", _pstr},
 		{"rotl", _rotl},
+		{"rotr", _rotr},
 		{NULL, NULL}
 	};
-	int opcodes = 14, i;
+	int opcodes = 15, i;
 
 	for (i = 0; i < opcodes; i++)
 	{
