@@ -22,8 +22,7 @@ void helping(args_t *args)
 			continue;
 		}
 		func_ptr = func_choice();
-		if (func_ptr == NULL ||
-		    (strcmp(data->word1, "push") != 0 && strtok(NULL, " ")))
+		if (func_ptr == NULL)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 				args->line_num, data->word1);
